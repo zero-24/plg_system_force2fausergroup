@@ -22,7 +22,7 @@ This plugin allows to force users to set up 2FA in a specific user group.
 
 ### Initial setup the plugin
 
-- Download the latest version of the plugin: https://github.com/zero-24/plg_user_force2fausergroup/releases/latest
+- Download the latest version of the plugin: https://github.com/zero-24/plg_system_force2fausergroup/releases/latest
 - Install the plugin using Upload & Install
 - Enable the plugin form the plugin manager
 - Setup the groups that you want 2FA to be enforced one.
@@ -51,7 +51,7 @@ Any other plugin version I may have added to the download section don't get upda
 ## Issues / Pull Requests
 
 You have found an Issue or have an question / suggestion regarding the plugin, or do you want to propose code changes?
-[Open an issue in this repo](https://github.com/zero-24/plg_user_force2fausergroup/issues/new) or submit a pull request with the proposed changes against the master branch.
+[Open an issue in this repo](https://github.com/zero-24/plg_system_force2fausergroup/issues/new) or submit a pull request with the proposed changes against the master branch.
 
 ## Joomla! Extensions Directory (JED)
 

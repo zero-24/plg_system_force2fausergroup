@@ -5,14 +5,14 @@
 		<description>Force2faUsergroup Plugin</description>
 		<element>force2fausergroup</element>
 		<type>plugin</type>
-		<folder>user</folder>
+		<folder>system</folder>
 		<client>site</client>
 		<version>1.0.0</version>
-		<infourl title="Force2faUsergroup Plugin">https://github.com/zero-24/plg_user_force2fausergroup</infourl>
+		<infourl title="Force2faUsergroup Plugin">https://github.com/zero-24/plg_system_force2fausergroup</infourl>
 		<downloads>
-			<downloadurl type="full" format="zip">https://github.com/zero-24/plg_user_force2fausergroup/releases/download/1.0.0/plg_user_force2fausergroup.zip</downloadurl>
+			<downloadurl type="full" format="zip">https://github.com/zero-24/plg_system_force2fausergroup/releases/download/1.0.0/plg_system_force2fausergroup.zip</downloadurl>
 		</downloads>
-		<sha512>51d7d51023b1c5e1811d1d23c131b23edbdc0b7d5877236ad84e9cb056f861a946d907634365b57a85d5ab60ec3f2c5f7cee9c36deebeddb8876d7e13cf9f04b</sha512>
+		<sha512>6609279ff00561aa240bf6f9226646b25ccbb357824404011ad444e2379e3ea18b5123ed3edde217d5454abcef3accc27914a2b3d5d0423e8a1576dcc76b8e5c</sha512>
 		<tags>
 			<tag>stable</tag>
 		</tags>
@@ -26,14 +26,14 @@
 		<description>Force2faUsergroup Plugin</description>
 		<element>force2fausergroup</element>
 		<type>plugin</type>
-		<folder>user</folder>
+		<folder>system</folder>
 		<client>site</client>
 		<version>1.0.0</version>
-		<infourl title="Force2faUsergroup Plugin">https://github.com/zero-24/plg_user_force2fausergroup</infourl>
+		<infourl title="Force2faUsergroup Plugin">https://github.com/zero-24/plg_system_force2fausergroup</infourl>
 		<downloads>
-			<downloadurl type="full" format="zip">https://github.com/zero-24/plg_user_force2fausergroup/releases/download/1.0.0/plg_user_force2fausergroup.zip</downloadurl>
+			<downloadurl type="full" format="zip">https://github.com/zero-24/plg_system_force2fausergroup/releases/download/1.0.0/plg_system_force2fausergroup.zip</downloadurl>
 		</downloads>
-		<sha512>51d7d51023b1c5e1811d1d23c131b23edbdc0b7d5877236ad84e9cb056f861a946d907634365b57a85d5ab60ec3f2c5f7cee9c36deebeddb8876d7e13cf9f04b</sha512>
+		<sha512>6609279ff00561aa240bf6f9226646b25ccbb357824404011ad444e2379e3ea18b5123ed3edde217d5454abcef3accc27914a2b3d5d0423e8a1576dcc76b8e5c</sha512>
 		<tags>
 			<tag>stable</tag>
 		</tags>

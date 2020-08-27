@@ -21,7 +21,7 @@ use Joomla\Registry\Registry;
  *
  * @since  1.0
  */
-class PlgUserForce2faUsergroup extends CMSPlugin
+class PlgSystemForce2faUsergroup extends CMSPlugin
 {
 	/**
 	 * Affects constructor behavior. If true, language files will be loaded automatically.
@@ -128,7 +128,7 @@ class PlgUserForce2faUsergroup extends CMSPlugin
 			}
 
 			// Redirect to com_users profile edit
-			$this->app->enqueueMessage(Text::_('PLG_USER_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
+			$this->app->enqueueMessage(Text::_('PLG_SYSTEM_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
 			$this->app->redirect('index.php?option=com_users&view=profile&layout=edit');
 		}
 
@@ -142,7 +142,7 @@ class PlgUserForce2faUsergroup extends CMSPlugin
 		}
 
 		// Redirect to com_admin profile edit
-		$this->app->enqueueMessage(Text::_('PLG_USER_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
+		$this->app->enqueueMessage(Text::_('PLG_SYSTEM_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
 		$this->app->redirect('index.php?option=com_admin&task=profile.edit&id=' . Factory::getUser()->id);
 	}
 
