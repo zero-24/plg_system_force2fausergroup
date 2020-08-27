@@ -15,7 +15,7 @@ use Joomla\CMS\Installer\InstallerScript;
  *
  * @since  1.0
  */
-class PlgSystemForce2faUsergroupInstallerScript extends InstallerScript
+class PlgUserForce2faUsergroupInstallerScript extends InstallerScript
 {
 	/**
 	 * Extension script constructor.

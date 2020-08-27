@@ -18,7 +18,7 @@ use Joomla\CMS\Response\JsonResponse;
  *
  * @since  1.0
  */
-class PlgSystemForce2faUsergroup extends CMSPlugin
+class PlgUserForce2faUsergroup extends CMSPlugin
 {
 	/**
 	 * Application object.
@@ -35,8 +35,14 @@ class PlgSystemForce2faUsergroup extends CMSPlugin
 	 *
 	 * @since   1.0
 	 */
-	public function onAfterInitialise()
+	public function onUserAfterLogin()
 	{
+		// Skip guests
+		if (Factory::getUser()->guest)
+		{
+			return;
+		}
+
 
 	}
 }

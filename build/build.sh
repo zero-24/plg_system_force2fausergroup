@@ -1,5 +1,5 @@
 #!/bin/bash
-EXTENSION_ZIP_FILENAME="build/plg_system_force2fausergroup.zip"
+EXTENSION_ZIP_FILENAME="build/plg_user_force2fausergroup.zip"
 EXTENSION_ELEMENT="force2fausergroup"
 if [ ! -f "$EXTENSION_ELEMENT.xml" ]; then cd ..; fi
 if [ -f "$EXTENSION_ZIP_FILENAME" ]; then rm $EXTENSION_ZIP_FILENAME; fi
