@@ -40,13 +40,30 @@ class PlgSystemForce2faUsergroup extends CMSPlugin
 	protected $app;
 
 	/**
-	 * Reject cross-origin requests to protect from CSRF, XSSI, and other bugs
+	 * Listener for the `onAfterInitialise` event
 	 *
 	 * @return  void
 	 *
 	 * @since   1.0
 	 */
-	public function onUserAfterLogin()
+	public function onAfterInitialise()
+	{
+		if ($this->isTwoFactorAuthenticationRequired())
+		{
+			$this->redirectIfTwoFactorAuthenticationRequired();
+		}
+	}
+
+	/**
+	 * Method to catch user login and check whether this use has to setup 2fa
+	 *
+	 * @param   array  $options  Array holding options (user, responseType)
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0.0
+	 */
+	public function onUserAfterLogin($options)
 	{
 		if ($this->isTwoFactorAuthenticationRequired())
 		{
