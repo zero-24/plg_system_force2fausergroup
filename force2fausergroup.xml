@@ -20,20 +20,13 @@
 		<fields name="params">
 			<fieldset name="basic">
 				<field
-					name="cors_endpoints"
-					type="subform"
-					label="PLG_SYSTEM_FORCE2FAUSERGROUP_CORS_ENDPOINTS"
-					description="PLG_SYSTEM_FORCE2FAUSERGROUP_CORS_ENDPOINTS_DESC"
+					name="force2fausergroups"
+					type="usergrouplist"
+					label="PLG_SYSTEM_FORCE2FAUSERGROUP_GROUPS_LABEL"
 					multiple="true"
-				>
-					<form>
-						<field
-							name="rule"
-							type="text"
-							label="PLG_SYSTEM_FORCE2FAUSERGROUP_CORS_ENDPOINT_RULE"
-						/>
-					</form>
-				</field>
+					filter="int_array"
+					size="10"
+				/>
 			</fieldset>
 		</fields>
 	</config>
