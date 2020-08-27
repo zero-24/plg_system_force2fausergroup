@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9" type="plugin" group="system" method="upgrade">
+	<name>plg_system_force2fausergroup</name>
+	<creationDate>26.08.2020</creationDate>
+	<author>Tobias Zulauf</author>
+	<copyright>(C) 2020 Tobias Zulauf All rights reserved.</copyright>
+	<authorUrl>https://www.jah-tz.de</authorUrl>
+	<version>1.0.0</version>
+	<license>GNU/GPL Version 2 or later</license>
+	<description>PLG_SYSTEM_FORCE2FAUSERGROUP_XML_DESCRIPTION</description>
+	<scriptfile>script.php</scriptfile>
+	<files>
+		<folder>language</folder>
+		<filename plugin="force2fausergroup">force2fausergroup.php</filename>
+	</files>
+	<updateservers>
+		<server type="extension" name="Force2faUsergroup Update Site">https://raw.githubusercontent.com/zero-24/plg_system_force2fausergroup/master/update.xml</server>
+	</updateservers>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="cors_endpoints"
+					type="subform"
+					label="PLG_SYSTEM_FORCE2FAUSERGROUP_CORS_ENDPOINTS"
+					description="PLG_SYSTEM_FORCE2FAUSERGROUP_CORS_ENDPOINTS_DESC"
+					multiple="true"
+				>
+					<form>
+						<field
+							name="rule"
+							type="text"
+							label="PLG_SYSTEM_FORCE2FAUSERGROUP_CORS_ENDPOINT_RULE"
+						/>
+					</form>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
