@@ -9,9 +9,12 @@
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Application\CMSApplication;
+use Joomla\CMS\Component\ComponentHelper;
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Plugin\CMSPlugin;
-use Joomla\CMS\Response\JsonResponse;
+use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\Registry\Registry;
 
 /**
  * Plugin class for Fetch Metadata
@@ -20,6 +23,14 @@ use Joomla\CMS\Response\JsonResponse;
  */
 class PlgUserForce2faUsergroup extends CMSPlugin
 {
+	/**
+	 * Affects constructor behavior. If true, language files will be loaded automatically.
+	 *
+	 * @var    boolean
+	 * @since  1.0
+	 */
+	protected $autoloadLanguage = true;
+
 	/**
 	 * Application object.
 	 *
@@ -37,13 +48,10 @@ class PlgUserForce2faUsergroup extends CMSPlugin
 	 */
 	public function onUserAfterLogin()
 	{
-		// Skip guests
-		if (Factory::getUser()->guest)
+		if ($this->isTwoFactorAuthenticationRequired())
 		{
-			return;
+			$this->redirectIfTwoFactorAuthenticationRequired();
 		}
-
-
 	}
 
 	/**
@@ -58,26 +66,32 @@ class PlgUserForce2faUsergroup extends CMSPlugin
 	 *
 	 * @throws \Exception
 	 */
-	protected function isTwoFactorAuthenticationRequired(): bool
+	private function isTwoFactorAuthenticationRequired(): bool
 	{
-		$userId = $this->getIdentity()->id;
+		$user = Factory::getUser();
 
-		if (!$userId)
+		if ($user->guest)
 		{
 			return false;
 		}
 
 		// Check session if user has set up 2fa
-		if ($this->getSession()->has('has2fa'))
+		if ($this->app->getUserState('has2fa', false))
 		{
 			return false;
 		}
 
-		$enforce2faOptions = ComponentHelper::getComponent('com_users')->getParams()->get('enforce_2fa_options', 0);
+		// If the user is not allowed to view the output then end here.
+		$forced2faGroups = (array) $this->params->get('force2fausergroups', []);
 
-		if ($enforce2faOptions == 0 || !$enforce2faOptions)
+		if (!empty($forced2faGroups))
 		{
-			return false;
+			$userGroups = (array) $user->get('groups', []);
+
+			if (!array_intersect($forced2faGroups, $userGroups))
+			{
+				return false;
+			}
 		}
 
 		if (!PluginHelper::isEnabled('twofactorauth'))
@@ -85,50 +99,7 @@ class PlgUserForce2faUsergroup extends CMSPlugin
 			return false;
 		}
 
-		$pluginsSiteEnable          = false;
-		$pluginsAdministratorEnable = false;
-		$pluginOptions              = PluginHelper::getPlugin('twofactorauth');
-
-		// Sets and checks pluginOptions for Site and Administrator view depending on if any 2fa plugin is enabled for that view
-		array_walk($pluginOptions,
-			static function ($pluginOption) use (&$pluginsSiteEnable, &$pluginsAdministratorEnable)
-			{
-				$option  = new Registry($pluginOption->params);
-				$section = $option->get('section', 3);
-
-				switch ($section)
-				{
-					case 1:
-						$pluginsSiteEnable = true;
-						break;
-					case 2:
-						$pluginsAdministratorEnable = true;
-						break;
-					case 3:
-					default:
-						$pluginsAdministratorEnable = true;
-						$pluginsSiteEnable          = true;
-				}
-			}
-		);
-
-		if ($pluginsSiteEnable && $this->isClient('site'))
-		{
-			if (\in_array($enforce2faOptions, [1, 3]))
-			{
-				return !$this->hasUserConfiguredTwoFactorAuthentication();
-			}
-		}
-
-		if ($pluginsAdministratorEnable && $this->isClient('administrator'))
-		{
-			if (\in_array($enforce2faOptions, [2, 3]))
-			{
-				return !$this->hasUserConfiguredTwoFactorAuthentication();
-			}
-		}
-
-		return false;
+		return !$this->hasUserConfiguredTwoFactorAuthentication();
 	}
 
 	/**
@@ -140,14 +111,14 @@ class PlgUserForce2faUsergroup extends CMSPlugin
 	 *
 	 * @since  1.0.0
 	 */
-	protected function redirectIfTwoFactorAuthenticationRequired(): void
+	private function redirectIfTwoFactorAuthenticationRequired(): void
 	{
-		$option = $this->input->get('option');
-		$task   = $this->input->get('task');
-		$view   = $this->input->get('view', null, 'STRING');
-		$layout = $this->input->get('layout', null, 'STRING');
+		$option = (string) $this->app->input->get('option');
+		$task   = (string) $this->app->input->get('task');
+		$view   = (string) $this->app->input->get('view', null, 'string');
+		$layout = (string) $this->app->input->get('layout', null, 'string');
 
-		if ($this->isClient('site'))
+		if ($this->app->isClient('site'))
 		{
 			// If user is already on edit profile screen or press update/apply button, do nothing to avoid infinite redirect
 			if (($option === 'com_users' && \in_array($task, ['profile.edit', 'profile.save', 'profile.apply', 'user.logout', 'user.menulogout'], true))
@@ -157,8 +128,8 @@ class PlgUserForce2faUsergroup extends CMSPlugin
 			}
 
 			// Redirect to com_users profile edit
-			$this->enqueueMessage(Text::_('JENFORCE_2FA_REDIRECT_MESSAGE'), 'notice');
-			$this->redirect('index.php?option=com_users&view=profile&layout=edit');
+			$this->app->enqueueMessage(Text::_('PLG_USER_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
+			$this->app->redirect('index.php?option=com_users&view=profile&layout=edit');
 		}
 
 		if ($option === 'com_admin' && \in_array($task, ['profile.edit', 'profile.save', 'profile.apply'], true)
@@ -171,8 +142,8 @@ class PlgUserForce2faUsergroup extends CMSPlugin
 		}
 
 		// Redirect to com_admin profile edit
-		$this->enqueueMessage(Text::_('JENFORCE_2FA_REDIRECT_MESSAGE'), 'notice');
-		$this->redirect('index.php?option=com_admin&task=profile.edit&id=' . $this->getIdentity()->id);
+		$this->app->enqueueMessage(Text::_('PLG_USER_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
+		$this->app->redirect('index.php?option=com_admin&task=profile.edit&id=' . Factory::getUser()->id);
 	}
 
 	/**
@@ -189,15 +160,16 @@ class PlgUserForce2faUsergroup extends CMSPlugin
 	 */
 	private function hasUserConfiguredTwoFactorAuthentication(): bool
 	{
-		$user = $this->getIdentity();
+		$user = Factory::getUser();
 
+		// Check whether there is a 2FA setup for that user
 		if (empty($user->otpKey) || empty($user->otep))
 		{
 			return false;
 		}
 
 		// Set session to user has configured 2fa
-		$this->getSession()->set('has2fa', 1);
+		$this->app->setUserState('has2fa', true);
 
 		return true;
 	}
