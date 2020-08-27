@@ -1,6 +1,6 @@
 # Force2faUsergroup Plugin
 
-This Joomla Plugin helps to protect your sites by using [Fetch Metadata Request Headers](https://web.dev/fetch-metadata/) ([w3c-spec](https://www.w3.org/TR/fetch-metadata/))
+This plugin allows to force users to set up 2FA in a specific user group.
 
 ## Sponsoring and Donation
 
@@ -14,14 +14,9 @@ Thanks for your support!
 
 ## Features
 
-This Joomla Plugin helps to protect your sites by using [Fetch Metadata Request Headers](https://web.dev/fetch-metadata/)
+This plugin allows to force users to set up 2FA in a specific user group.
 
-The implemened rules are:
-- Step 1: Allow requests from browsers which don't send Fetch Metadata
-- Step 2: Allow same-site and browser-initiated requests
-- Step 3: Allow simple top-level navigation and iframing
-- Step 4: Opt out endpoints that are meant to serve cross-site traffic (Optional)
-- Step 5: Reject all other requests that are cross-site and not navigational
+- Setup the groups to force a 2FA setup on the next login.
 
 ## Configuration
 
@@ -30,14 +25,17 @@ The implemened rules are:
 - Download the latest version of the plugin: https://github.com/zero-24/plg_system_force2fausergroup/releases/latest
 - Install the plugin using Upload & Install
 - Enable the plugin form the plugin manager
+- Setup the groups that you want 2FA to be enforced one.
 
 Now the inital setup is completed.
 
 ### Option descriptions
 
-#### Allow iframes
+#### 2FA Usergroups
 
-#### Whitelist CORS endpoints
+Select form a multiselect the groups on where the 2FA should be enforced on the next login.
+
+## Translation
 
 This plugin is translated into the following languages:
 - de-DE by @zero-24
@@ -54,10 +52,6 @@ Any other plugin version I may have added to the download section don't get upda
 
 You have found an Issue or have an question / suggestion regarding the plugin, or do you want to propose code changes?
 [Open an issue in this repo](https://github.com/zero-24/plg_system_force2fausergroup/issues/new) or submit a pull request with the proposed changes against the master branch.
-
-## Beyond this repo
-
-This plugin is intended as backport for an upcomming PR against the core CMS.
 
 ## Joomla! Extensions Directory (JED)
 
