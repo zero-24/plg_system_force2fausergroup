@@ -158,9 +158,30 @@ class PlgSystemForce2faUsergroup extends CMSPlugin
 			return;
 		}
 
-		// Redirect to com_admin profile edit
+		$user = Factory::getUser();
+
+		// With 4.0.0 you can configure the 2FA options from your com_admin profile
+		if (version_compare(JVERSION, '4.0.0', 'ge'))
+		{
+			// Redirect to com_admin profile edit
+			$this->app->enqueueMessage(Text::_('PLG_SYSTEM_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
+			$this->app->redirect('index.php?option=com_admin&task=profile.edit&id=' . $user->id);
+		}
+
+		// Check whether the current user is allowed to edit his user via com_users as in 3.9 you can not edit 2fa in the backend.
+		if (($user->authorise('core.edit', 'com_users') && $user->authorise('core.manage', 'com_users'))
+			|| $user->authorise('core.admin')
+		)
+		{
+			// Redirect to com_users user edit
+			$this->app->enqueueMessage(Text::_('PLG_SYSTEM_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
+			$this->app->redirect('index.php?option=com_users&view=user&layout=edit&id=' . $user->id);
+		}
+
+		// We are a user that is allowed to login to the backend but not to access com_users
+		// and we are not yet at a version that supports 2FA edit in com_admin. Redirect to the frontend.
 		$this->app->enqueueMessage(Text::_('PLG_SYSTEM_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
-		$this->app->redirect('index.php?option=com_admin&task=profile.edit&id=' . Factory::getUser()->id);
+		$this->app->redirect(JUri::root() . 'index.php?option=com_users&view=profile&layout=edit');
 	}
 
 	/**
