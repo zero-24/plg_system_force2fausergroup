@@ -175,7 +175,7 @@ class PlgSystemForce2faUsergroup extends CMSPlugin
 		{
 			// Redirect to com_users user edit
 			$this->app->enqueueMessage(Text::_('PLG_SYSTEM_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
-			$this->app->redirect('index.php?option=com_users&view=user&layout=edit&id=' . $user->id);
+			$this->app->redirect('index.php?option=com_users&task=user.edit&id=' . $user->id);
 		}
 
 		// We are a user that is allowed to login to the backend but not to access com_users
