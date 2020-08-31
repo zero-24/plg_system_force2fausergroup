@@ -1,16 +1,16 @@
 <?xml version="1.0" ?>
 <updates>
 	<update>
-		<name>Force2faUsergroup 1.0.0</name>
+		<name>Force2faUsergroup 1.0.1</name>
 		<description>Force2faUsergroup Plugin</description>
 		<element>force2fausergroup</element>
 		<type>plugin</type>
 		<folder>system</folder>
 		<client>site</client>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 		<infourl title="Force2faUsergroup Plugin">https://github.com/zero-24/plg_system_force2fausergroup</infourl>
 		<downloads>
-			<downloadurl type="full" format="zip">https://github.com/zero-24/plg_system_force2fausergroup/releases/download/1.0.0/plg_system_force2fausergroup.zip</downloadurl>
+			<downloadurl type="full" format="zip">https://github.com/zero-24/plg_system_force2fausergroup/releases/download/1.0.1/plg_system_force2fausergroup.zip</downloadurl>
 		</downloads>
 		<sha512>a9f15e6b4b7a0ecc7acfab665fb9bdb37eb30069b95b31291dc19ce22368131ae8bea24409e74e1d1b49a2ff607de063c3ae21e2b24a235c653167a4f77e58bc</sha512>
 		<tags>
@@ -22,16 +22,16 @@
 		<targetplatform name="joomla" version="3.(9|10)"/>
 	</update>
 	<update>
-		<name>Force2faUsergroup 1.0.0</name>
+		<name>Force2faUsergroup 1.0.1</name>
 		<description>Force2faUsergroup Plugin</description>
 		<element>force2fausergroup</element>
 		<type>plugin</type>
 		<folder>system</folder>
 		<client>site</client>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 		<infourl title="Force2faUsergroup Plugin">https://github.com/zero-24/plg_system_force2fausergroup</infourl>
 		<downloads>
-			<downloadurl type="full" format="zip">https://github.com/zero-24/plg_system_force2fausergroup/releases/download/1.0.0/plg_system_force2fausergroup.zip</downloadurl>
+			<downloadurl type="full" format="zip">https://github.com/zero-24/plg_system_force2fausergroup/releases/download/1.0.1/plg_system_force2fausergroup.zip</downloadurl>
 		</downloads>
 		<sha512>a9f15e6b4b7a0ecc7acfab665fb9bdb37eb30069b95b31291dc19ce22368131ae8bea24409e74e1d1b49a2ff607de063c3ae21e2b24a235c653167a4f77e58bc</sha512>
 		<tags>
