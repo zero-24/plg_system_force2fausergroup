@@ -35,12 +35,6 @@ Now the inital setup is completed.
 
 Select form a multiselect the groups on where the 2FA should be enforced on the next login.
 
-## Translation
-
-This plugin can be translated via the Joomla Crowdin Platform (https://joomla.crowdin.com/zero-24).
-Do you want to contribute a translation for an additional language? 
-Feel free to contact me via Crowdin or an issue within this repository, so I can add the language to the project.
-
 ## Update Server
 
 Please note that my update server only supports the latest version running the latest version of Joomla and atleast PHP 7.2.5.
