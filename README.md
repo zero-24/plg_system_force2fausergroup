@@ -35,14 +35,6 @@ Now the inital setup is completed.
 
 Select form a multiselect the groups on where the 2FA should be enforced on the next login.
 
-## Translation
-
-This plugin is translated into the following languages:
-- de-DE by @zero-24
-- en-GB by @zero-24
-
-You want to contribute a translation for an additional language? Feel free to create an Pull Request against the master branch.
-
 ## Update Server
 
 Please note that my update server only supports the latest version running the latest version of Joomla and atleast PHP 7.2.5.
