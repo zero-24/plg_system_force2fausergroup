@@ -37,11 +37,9 @@ Select form a multiselect the groups on where the 2FA should be enforced on the 
 
 ## Translation
 
-This plugin is translated into the following languages:
-- de-DE by @zero-24
-- en-GB by @zero-24
-
-You want to contribute a translation for an additional language? Feel free to create an Pull Request against the master branch.
+This plugin can be translated via the Joomla Crowdin Platform (https://joomla.crowdin.com/zero-24).
+Do you want to contribute a translation for an additional language? 
+Feel free to contact me via Crowdin or an issue within this repository, so I can add the language to the project.
 
 ## Update Server
 
