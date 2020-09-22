@@ -49,6 +49,10 @@ You have found an Issue, have a question or you would like to suggest changes re
 
 You want to translate this extension to your own language? Check out my [Crowdin Page for my Extensions](https://joomla.crowdin.com/zero-24) for more details. Feel free to [open an issue here](https://github.com/zero-24/plg_system_force2fausergroup/issues/new) on any question that comes up.
 
+## Beyond this repo
+
+This feature [has been merged to the Joomla! Core](https://github.com/joomla/joomla-cms/pull/30522) and will be part of the upcomming 4.1 release. This plugin here acts as a backport for Joomla 3.9+ 
+
 ## Joomla! Extensions Directory (JED)
 
 This plugin can also been found in the Joomla! Extensions Directory: [Force2faUsergroup by zero24](https://extensions.joomla.org/extension/force2fausergroup/)
