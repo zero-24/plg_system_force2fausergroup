@@ -22,9 +22,9 @@ This plugin allows to force users to set up 2FA in a specific user group.
 
 ### Initial setup the plugin
 
-- Download the latest version of the plugin: https://github.com/zero-24/plg_system_force2fausergroup/releases/latest
-- Install the plugin using Upload & Install
-- Enable the plugin form the plugin manager
+- [Download the latest version of the plugin](https://github.com/zero-24/plg_system_force2fausergroup/releases/latest)
+- Install the plugin using `Upload & Install`
+- Enable the plugin `System - Force2faUsergroup` from the plugin manager
 - Setup the groups that you want 2FA to be enforced one.
 
 Now the inital setup is completed.
