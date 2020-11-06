@@ -12,7 +12,7 @@
 		<downloads>
 			<downloadurl type="full" format="zip">https://github.com/zero-24/plg_system_force2fausergroup/releases/download/1.0.2/plg_system_force2fausergroup.zip</downloadurl>
 		</downloads>
-		<sha512>32b1118b660a04aa4806aac09c34554b85cde731601a01bb832e81b0445f31372e1ad8c45a750c30d30c95c16669ed97ae6c2cefbe07d920ca654396befadee2</sha512>
+		<sha512>78fda35e27f8cb01de7847c38186812223d6939654e8a933ff371e7f95987cde74bb4364bba9ea557dc24abbd620031129f924dd56a4165bad23e0b114096638</sha512>
 		<tags>
 			<tag>stable</tag>
 		</tags>
@@ -33,7 +33,7 @@
 		<downloads>
 			<downloadurl type="full" format="zip">https://github.com/zero-24/plg_system_force2fausergroup/releases/download/1.0.2/plg_system_force2fausergroup.zip</downloadurl>
 		</downloads>
-		<sha512>32b1118b660a04aa4806aac09c34554b85cde731601a01bb832e81b0445f31372e1ad8c45a750c30d30c95c16669ed97ae6c2cefbe07d920ca654396befadee2</sha512>
+		<sha512>78fda35e27f8cb01de7847c38186812223d6939654e8a933ff371e7f95987cde74bb4364bba9ea557dc24abbd620031129f924dd56a4165bad23e0b114096638</sha512>
 		<tags>
 			<tag>stable</tag>
 		</tags>
