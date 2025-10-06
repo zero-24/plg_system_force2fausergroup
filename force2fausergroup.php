@@ -122,10 +122,10 @@ class PlgSystemForce2faUsergroup extends CMSPlugin
 	 */
 	private function redirectIfTwoFactorAuthenticationRequired(): void
 	{
-		$option = (string) $this->getApplication()->input->get('option');
-		$task   = (string) $this->getApplication()->input->get('task');
-		$view   = (string) $this->getApplication()->input->get('view', null, 'string');
-		$layout = (string) $this->getApplication()->input->get('layout', null, 'string');
+		$option = (string) $this->getApplication()->getInput()->get('option');
+		$task   = (string) $this->getApplication()->getInput()->get('task');
+		$view   = (string) $this->getApplication()->getInput()->get('view', null, 'string');
+		$layout = (string) $this->getApplication()->getInput()->get('layout', null, 'string');
 
 		if ($this->getApplication()->isClient('site'))
 		{
