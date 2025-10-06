@@ -32,14 +32,6 @@ class PlgSystemForce2faUsergroup extends CMSPlugin
 	protected $autoloadLanguage = true;
 
 	/**
-	 * Application object.
-	 *
-	 * @var    CMSApplication
-	 * @since  1.0
-	 */
-	protected $app;
-
-	/**
 	 * Listener for the `onAfterInitialise` event
 	 *
 	 * @return  void
@@ -93,7 +85,7 @@ class PlgSystemForce2faUsergroup extends CMSPlugin
 		}
 
 		// Check session if user has set up 2fa
-		if ($this->app->getUserState('has2fa', false))
+		if ($this->getApplication()->getUserState('has2fa', false))
 		{
 			return false;
 		}
@@ -130,12 +122,12 @@ class PlgSystemForce2faUsergroup extends CMSPlugin
 	 */
 	private function redirectIfTwoFactorAuthenticationRequired(): void
 	{
-		$option = (string) $this->app->input->get('option');
-		$task   = (string) $this->app->input->get('task');
-		$view   = (string) $this->app->input->get('view', null, 'string');
-		$layout = (string) $this->app->input->get('layout', null, 'string');
+		$option = (string) $this->getApplication()->input->get('option');
+		$task   = (string) $this->getApplication()->input->get('task');
+		$view   = (string) $this->getApplication()->input->get('view', null, 'string');
+		$layout = (string) $this->getApplication()->input->get('layout', null, 'string');
 
-		if ($this->app->isClient('site'))
+		if ($this->getApplication()->isClient('site'))
 		{
 			// If user is already on edit profile screen or press update/apply button, do nothing to avoid infinite redirect
 			if (($option === 'com_users' && \in_array($task, ['profile.edit', 'profile.save', 'profile.apply', 'user.logout', 'user.menulogout'], true))
@@ -145,8 +137,8 @@ class PlgSystemForce2faUsergroup extends CMSPlugin
 			}
 
 			// Redirect to com_users profile edit
-			$this->app->enqueueMessage(Text::_('PLG_SYSTEM_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
-			$this->app->redirect('index.php?option=com_users&view=profile&layout=edit');
+			$this->getApplication()->enqueueMessage(Text::_('PLG_SYSTEM_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
+			$this->getApplication()->redirect('index.php?option=com_users&view=profile&layout=edit');
 		}
 
 		if ($option === 'com_admin' && \in_array($task, ['profile.edit', 'profile.save', 'profile.apply'], true)
@@ -164,16 +156,16 @@ class PlgSystemForce2faUsergroup extends CMSPlugin
 		if (version_compare(JVERSION, '4.0.0', 'ge'))
 		{
 			// Redirect to com_users user edit
-			$this->app->enqueueMessage(Text::_('PLG_SYSTEM_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
-			$this->app->redirect('index.php?option=com_users&task=user.edit&id=' . $user->id);
+			$this->getApplication()->enqueueMessage(Text::_('PLG_SYSTEM_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
+			$this->getApplication()->redirect('index.php?option=com_users&task=user.edit&id=' . $user->id);
 		}
 
 		// With 3.9.22 (https://github.com/joomla/joomla-cms/pull/30751) and 4.0.0 you can configure the 2FA options from your com_admin profile
 		if (version_compare(JVERSION, '3.9.22', 'ge'))
 		{
 			// Redirect to com_admin profile edit
-			$this->app->enqueueMessage(Text::_('PLG_SYSTEM_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
-			$this->app->redirect('index.php?option=com_admin&task=profile.edit&id=' . $user->id);
+			$this->getApplication()->enqueueMessage(Text::_('PLG_SYSTEM_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
+			$this->getApplication()->redirect('index.php?option=com_admin&task=profile.edit&id=' . $user->id);
 		}
 
 		// Check whether the current user is allowed to edit his user via com_users as in 3.9 you can not edit 2fa in the backend.
@@ -182,14 +174,14 @@ class PlgSystemForce2faUsergroup extends CMSPlugin
 		)
 		{
 			// Redirect to com_users user edit
-			$this->app->enqueueMessage(Text::_('PLG_SYSTEM_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
-			$this->app->redirect('index.php?option=com_users&task=user.edit&id=' . $user->id);
+			$this->getApplication()->enqueueMessage(Text::_('PLG_SYSTEM_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
+			$this->getApplication()->redirect('index.php?option=com_users&task=user.edit&id=' . $user->id);
 		}
 
 		// We are a user that is allowed to login to the backend but not to access com_users
 		// and we are not yet at a version that supports 2FA edit in com_admin or com_users. Redirect to the frontend.
-		$this->app->enqueueMessage(Text::_('PLG_SYSTEM_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
-		$this->app->redirect(JUri::root() . 'index.php?option=com_users&view=profile&layout=edit');
+		$this->getApplication()->enqueueMessage(Text::_('PLG_SYSTEM_FORCE2FAUSERGROUP_2FA_REDIRECT_MESSAGE'), 'notice');
+		$this->getApplication()->redirect(JUri::root() . 'index.php?option=com_users&view=profile&layout=edit');
 	}
 
 	/**
@@ -215,7 +207,7 @@ class PlgSystemForce2faUsergroup extends CMSPlugin
 		}
 
 		// Set session to user has configured 2fa
-		$this->app->setUserState('has2fa', true);
+		$this->getApplication()->setUserState('has2fa', true);
 
 		return true;
 	}
