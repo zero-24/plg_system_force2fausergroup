@@ -41,7 +41,7 @@ You want to translate this extension to your own language? Check out my [Crowdin
 
 ## Beyond this repo
 
-This feature [has been merged to the Joomla! Core](https://github.com/joomla/joomla-cms/pull/30522) and will be part of the upcomming 4.1 release. This plugin here acts as a backport for Joomla 3.9+ 
+This feature [has been merged to the Joomla! Core](https://github.com/joomla/joomla-cms/pull/30522) and will be part of the upcomming 4.1 release. This plugin here acts as a backport for Joomla 3.9+
 
 ## Joomla! Extensions Directory (JED)
 
